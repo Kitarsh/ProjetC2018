@@ -55,8 +55,7 @@ void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2);
  * fonction : opNorme_1
  * Description : callul de la norme 1 
  */
- 
- double opNorme_1(T_Mat *pMat);
+double opNorme_1(T_Mat *pMat);
 
 
 
