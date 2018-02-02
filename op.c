@@ -174,29 +174,104 @@ void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2)
 
 void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2)
 {
+    //--------------------------------------------------
+    //Verifier que pMat2 est de meme dimension que pMat1
+    //--------------------------------------------------
+    int nbLig_1, nbLig_2, nbCol_1, nbCol_2;
+    nbLig_1 = matNbLig(pMat1);
+    nbLig_2 = matNbLig(pMat2);
+    nbCol_1 = matNbCol(pMat1);
+    nbCol_2 = matNbCol(pMat2);
+    if(nbLig_1 != nbLig_2 || nbCol_1 != nbCol_2)
+    {
+        errMsg(1);
+    }
+    if(nbLig_1 != nbCol_1)
+    {
+        errMsg(3);
+    }
+    //
     //--------------------------------
-    //allouer pMatTmp
+    //allouer pMatTmp et initialiser en matrice identitée
     //--------------------------------
+    T_Mat tmp;
+    matUnite(&tmp, nbLig_1);
     //
     //--------------------------------------------------
     //boucle for de puissance. détail : enchainement de mult(t1, tTmp, tres) et cpy(tres, tTmp)
     //--------------------------------------------------
+    for(int i = 0; i < Expo; i++)
+    {
+        opMul(pMat1, &tmp, pMat2);
+        matCopy(pMat2, &tmp);
+    }
 }
 
 
 double opNorme_1(T_Mat *pMat)
 {
-
+    //----------------------------
+    //initialisation des variables
+    //----------------------------
+    double output;
+    //
+    //----------------
+    //boucle de calcul
+    //----------------  
+    for(int i = 0; i < pMat->NbLig; i++)
+    {
+        for(int j = 0; j < pMat->NbCol; j++)
+        {
+            output += abs(matAccElt(pMat, i, j));
+        }
+    }
+    return(output);
 }
 
 
 double opNorme_2(T_Mat *pMat)
 {
-
+    //----------------------------
+    //initialisation des variables
+    //----------------------------
+    double output;
+    //
+    //----------------
+    //boucle de calcul
+    //----------------
+    for(int i = 0; i < pMat->NbLig; i++)
+    {
+        for(int j = 0; j < pMat->NbCol; j++)
+        {
+            output += pow(abs(matAccElt(pMat, i, j)), 2);
+        }
+    }
+    output = sqrt(output);
+    return(output);
 }
 
 
 double opNorme_inf(T_Mat *pMat)
 {
-
+    //----------------------------
+    //initialisation des variables
+    //----------------------------
+    double output = 0;
+    double tmp;
+    //
+    //----------------
+    //boucle de calcul
+    //----------------
+    for(int i = 0; i < pMat->NbLig; i++)
+    {
+        for(int j = 0; j < pMat->NbCol; j++)
+        {
+            tmp = matAccElt(pMat, i, i);
+            if(abs(tmp) > output)
+            {
+                output = abs(tmp);
+            }
+        }
+    }
+    return(output);
 }
