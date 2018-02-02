@@ -18,54 +18,75 @@ void main(){
 		switch(input){
 			case 'A':
 			case 'a':{ //Addition
-				T_mat *t1,*t2,*t_res;
+				//initialiser
+				T_mat t1,t2,t_res;
 				printf("1ere matrice\n");
 				printf("\n");
-				esSaisir(t1);
+				esSaisir(&t1);
 				printf("2e matrice\n");
 				printf("\n");
-				esSaisir(t2);
-				opAddAlloc(t1,t2,t_res);
-				esAfficher(t_res);
+				esSaisir(&t2);
+				//additionner
+				opAddAlloc(&t1,&t2,&t_res);
+				//afficher le resultat
+				esAfficher(&t_res);
+				//liberer t_res
+				matLiberer(&t_res);
 				break;
 			}
 			case 'S':
 			case 's':{ //Soustraction
-				T_mat *t1,*t2,*t_res;
+				//initialiser
+				T_mat t1,t2,t_res;
 				printf("1ere matrice\n");
 				printf("\n");
-				esSaisir(t1);
+				esSaisir(&t1);
 				printf("2e matrice\n");
 				printf("\n");
-				esSaisir(t2);
-				opSubAlloc(t1,t2,t_res);
-				esAfficher(t_res);
+				esSaisir(&t2);
+				//soustraire
+				opSubAlloc(&t1,&t2,&t_res);
+				//afficher
+				esAfficher(&t_res);
+				//liberer t_res
+				matLiberer(&t_res);
 				break;
 			}
 			case 'm':
 			case 'M':{ //Multiplication
-				T_mat *t1,*t2,*t_res;
+				//initialiser
+				T_mat t1,t2,t_res;
 				printf("1ere matrice\n");
 				printf("\n");
-				esSaisir(t1);
+				esSaisir(&t1);
 				printf("2e matrice\n");
 				printf("\n");
-				esSaisir(t2);
-				opMulAlloc(t1,t2,t_res);
-				esAfficher(t_res);
+				esSaisir(&t2);
+				//soustraire
+				opMulAlloc(&t1,&t2,&t_res);
+				//afficher
+				esAfficher(&t_res);
+				//liberer t_res
+				matLiberer(&t_res);
 				break;
 			}
 			case 'p':
 			case 'P':{ //Puissance d'une matrice
-				T_mat *t1,*t_res;
+				//initialiser
+				T_mat t1,t_res;
 				printf("la matrice\n");
 				printf("\n");
-				esSaisir(t1);
+				esSaisir(&t1);
+				//saisie de l'exposant
 				int exposant;
 				printf("Exposant: ");
-				scanf("%d",&exposant); //saisie de l'exposant
-				opPuis(t1,exposant,t_res);
-				esAfficher(t_res);
+				scanf(" %d",&exposant);
+				//puissance
+				opPuis(&t1,&exposant,&t_res);
+				//afficher
+				esAfficher(&t_res);
+				//liberer t_res
+				matLiberer(&t_res);
 				break;
 			}
 			case 'q':
