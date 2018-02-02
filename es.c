@@ -130,7 +130,17 @@ void esSaisir(T_Mat *pMat)
     }
 }
 
-void esAfficher(T_Mat *pMat)
-{
-    //je commente encore pour rigoler
+void esAfficher(T_Mat *pMat){
+    for(int i=0; i<pMat->NbLig; i++){
+		for(int j=0; j<pMat-NbCol; j++){
+			double data = matAccElt(pMat,i,j);
+			if(data-data%1==0){ //si la donne est entiere, on affiche un entier
+				printf("%d\t",data);
+			}
+			else{ //sinon on affiche un double
+				printf("%f\t",data);
+			}
+		}
+		printf("\n");
+	}
 }

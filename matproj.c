@@ -17,7 +17,7 @@ void main(){
 		scanf("%c",&input); //input du choix
 		switch(input){
 			case 'A':
-			case 'a': //Addition
+			case 'a':{ //Addition
 				T_mat *t1,*t2,*t_res;
 				printf("1ere matrice\n");
 				printf("\n");
@@ -28,8 +28,9 @@ void main(){
 				opAddAlloc(t1,t2,t_res);
 				esAfficher(t_res);
 				break;
+			}
 			case 'S':
-			case 's': //Soustraction
+			case 's':{ //Soustraction
 				T_mat *t1,*t2,*t_res;
 				printf("1ere matrice\n");
 				printf("\n");
@@ -40,8 +41,9 @@ void main(){
 				opSubAlloc(t1,t2,t_res);
 				esAfficher(t_res);
 				break;
+			}
 			case 'm':
-			case 'M': //Multiplication
+			case 'M':{ //Multiplication
 				T_mat *t1,*t2,*t_res;
 				printf("1ere matrice\n");
 				printf("\n");
@@ -52,8 +54,9 @@ void main(){
 				opMulAlloc(t1,t2,t_res);
 				esAfficher(t_res);
 				break;
+			}
 			case 'p':
-			case 'P': //Puissance d'une matrice
+			case 'P':{ //Puissance d'une matrice
 				T_mat *t1,*t_res;
 				printf("la matrice\n");
 				printf("\n");
@@ -64,10 +67,12 @@ void main(){
 				opPuis(t1,exposant,t_res);
 				esAfficher(t_res);
 				break;
+			}
 			case 'q':
-			case 'Q': //Quitter
+			case 'Q':{ //Quitter
 				keep=0; //le programme s'arrêtera.
 				break;
+			}
 		}
 	}
 }
