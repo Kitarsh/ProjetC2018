@@ -3,6 +3,7 @@
 #define tridiag  3
 #define triinf   4
 #define trisup   5
+#define sym      6
 
 
 /*
