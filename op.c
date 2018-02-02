@@ -57,18 +57,18 @@ void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3)
     }
     //
     //--------------------------------
-    //allouer pMatDest
+    //allouer pMat3
     //--------------------------------
-    matAllouer(pMatDest, nbLig_1, nbCol_1);
+    matAllouer(pMat3, nbLig_1, nbCol_1);
     //
-    //--------------------------------------------------
-    //boucle for pour soustraire et ranger dans pMatDest
-    //--------------------------------------------------
+    //-----------------------------------------------
+    //boucle for pour soustraire et ranger dans pMat3
+    //-----------------------------------------------
     for(int i = 0; i < nbLig_1; i++)
     {
         for(int j = 0; j < NbCol1; j++)
         {
-            matModifElt(pMatDest, i, j, (matAccElt(pMat1, i, j) - matAccElt(pMat2, i, j));
+            matModifElt(pMat3, i, j, (matAccElt(pMat1, i, j) - matAccElt(pMat2, i, j));
         }
     }
 }
@@ -93,13 +93,13 @@ void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3)
     }
     //
     //--------------------------------
-    //allouer pMatDest
+    //allouer pMat3
     //--------------------------------
     matAllouer(pMat3, nbLig_1, nbCol_1);
     //
-    //--------------------------------------------------
-    //boucle for pour multiplier et ranger dans pMatDest
-    //--------------------------------------------------
+    //-----------------------------------------------
+    //boucle for pour multiplier et ranger dans pMat3
+    //-----------------------------------------------
     for(int i = 0; i < nbLig_1; i++)
     {
         for(int j = 0; j < nbCol_1; j++)
@@ -133,9 +133,9 @@ void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3)
         errMsg(2);
     }
     //
-    //--------------------------------------------------
-    //boucle for pour multiplier et ranger dans pMatDest
-    //--------------------------------------------------
+    //-----------------------------------------------
+    //boucle for pour multiplier et ranger dans pMat3
+    //-----------------------------------------------
     for(int i = 0; i < nbLig_1; i++)
     {
         for(int j = 0; j < nbCol_1; j++)
@@ -154,13 +154,33 @@ void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3)
 
 void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2)
 {
-
+    //--------------------------------
+    //allouer pMat2
+    //--------------------------------
+    matAllouer(pMat2, nbLig_1, nbCol_1);
+    //
+    //--------------------------------------------------
+    //boucle for pour multiplier et ranger dans pMat2
+    //--------------------------------------------------
+    for(int i = 0; i < nbLig_1; i++)
+    {
+        for(int j = 0; j < nbCol_1; j++)
+        {
+            matModifElt(pMat2, i, j, (matAccElt(pMat1, i, j) * scal);
+        }
+    }
 }
 
 
 void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2)
 {
-
+    //--------------------------------
+    //allouer pMatTmp
+    //--------------------------------
+    //
+    //--------------------------------------------------
+    //boucle for de puissance. détail : enchainement de mult(t1, tTmp, tres) et cpy(tres, tTmp)
+    //--------------------------------------------------
 }
 
 
