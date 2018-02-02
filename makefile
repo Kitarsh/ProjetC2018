@@ -10,5 +10,5 @@ es.o: es.c mat.h es.h err.h
 mat.o: mat.c mat.h
 	cc -c mat.c
 
-op.o: mat.h es.h err.h op.h
+op.o: mat.h err.h op.h
 	cc -c op.c

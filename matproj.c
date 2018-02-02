@@ -49,6 +49,8 @@ void main(){
 				printf("2e matrice\n");
 				printf("\n");
 				esSaisir(t2);
+				opMulAlloc(t1,t2,t_res);
+				esAfficher(t_res);
 				break;
 			case 'p':
 			case 'P': //Puissance d'une matrice
