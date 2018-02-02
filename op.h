@@ -3,15 +3,17 @@
 /*
  * fonction : opAddAlloc
  * Description : addition de deux matrices AVEC allocation de
- *	memoire pour la matrice resultat
+ * memoire pour la matrice resultat
+ * remarque : pMatDest n'a pas encore ete initialise
  */
-void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3);
+void opAddAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMatDest);
 
 
 /*
  * fonction : opSubAlloc
  * Description : soustraction de deux matrices AVEC allocation de
  *	memoire pour la matrice resultat
+ *  remarque : pMatDest n'a pas encore ete initialise
  */
 void opSubAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3);
 
@@ -43,6 +45,7 @@ void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2);
 /*
  * fonction : opPuis
  * Description : callul la puissance d'une  matrice 
+ * avec allocation dans pMat2
  */
 void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2);
 
