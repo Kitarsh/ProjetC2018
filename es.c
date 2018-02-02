@@ -120,7 +120,7 @@ void esSaisir(T_Mat *pMat)
                         scanf("%lg",&valTmp);
                         printf("\n\n");
                         matModifElt(pMat, lig, col, valTmp);
-                        if((lig != col) && ((lig + col * nbCol) < (nbLig * nb Col))){
+                        if((lig != col) && ((lig + col * nbCol) < (nbLig * nbCol))){
                             matModifElt(pMat, col, lig, valTmp);
                         }
                     }
@@ -132,9 +132,9 @@ void esSaisir(T_Mat *pMat)
 
 void esAfficher(T_Mat *pMat){
     for(int i=0; i<pMat->NbLig; i++){
-		for(int j=0; j<pMat-NbCol; j++){
+		for(int j=0; j<pMat->NbCol; j++){
 			double data = matAccElt(pMat,i,j);
-			if(data-data%1==0){ //si la donne est entiere, on affiche un entier
+			if(data-(int)data==0){ //si la donne est entiere, on affiche un entier
 				printf("%d\t",data);
 			}
 			else{ //sinon on affiche un double
