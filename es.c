@@ -48,7 +48,7 @@ void esSaisir(T_Mat *pMat)
                     printf("Mat[%d,%d] = ", lig, col);
                     scanf("%lg",&valTmp);
                     printf("\n\n");
-                    pMat->Elts[col + lig * nbCol] = valTmp;
+                    matModifElt(pMat, lig, col, valTmp);
                 }
             }
             break;
@@ -58,7 +58,7 @@ void esSaisir(T_Mat *pMat)
                 printf("Mat[%d,%d] = ", lig, lig);
                 scanf("%lg",&valTmp);
                 printf("\n\n");
-                pMat->Elts[lig + lig * nbCol] = valTmp;
+                matModifElt(pMat, lig, lig, valTmp);
             }
             break;
         case tridiag:
@@ -68,17 +68,17 @@ void esSaisir(T_Mat *pMat)
                     printf("Mat[%d,%d] = ", lig , lig - 1);
                     scanf("%lg",&valTmp);
                     printf("\n\n");
-                    pMat->Elts[lig - 1 + lig * nbCol] = valTmp;
+                    matModifElt(pMat, lig, lig - 1, valTmp);
                 }
                 printf("Mat[%d,%d] = ", lig, lig);
                 scanf("%lg",&valTmp);
                 printf("\n\n");
-                pMat->Elts[lig + lig * nbCol] = valTmp;
+                matModifElt(pMat, lig, lig, valTmp);
                 if(lig != nbLig){
                     printf("Mat[%d,%d] = ", lig , lig + 1);
                     scanf("%lg",&valTmp);
                     printf("\n\n");
-                    pMat->Elts[lig + 1 + lig * nbCol] = valTmp;
+                    matModifElt(pMat, lig, lig + 1, valTmp);
                 }
             }
             break;
@@ -91,7 +91,7 @@ void esSaisir(T_Mat *pMat)
                         printf("Mat[%d,%d] = ", lig, col);
                         scanf("%lg",&valTmp);
                         printf("\n\n");
-                        pMat->Elts[col + lig * nbCol] = valTmp;
+                        matModifElt(pMat, lig, col, valTmp);
                     }
                 }
             }
@@ -105,7 +105,7 @@ void esSaisir(T_Mat *pMat)
                         printf("Mat[%d,%d] = ", lig, col);
                         scanf("%lg",&valTmp);
                         printf("\n\n");
-                        pMat->Elts[col + lig * nbCol] = valTmp;
+                        matModifElt(pMat, lig, col, valTmp);
                     }
                 }
             }
@@ -119,9 +119,9 @@ void esSaisir(T_Mat *pMat)
                         printf("Mat[%d,%d] = ", lig, col);
                         scanf("%lg",&valTmp);
                         printf("\n\n");
-                        pMat->Elts[col + lig * nbCol] = valTmp;
+                        matModifElt(pMat, lig, col, valTmp);
                         if((lig != col) && ((lig + col * nbCol) < (nbLig * nb Col))){
-                            pMat->Elts[lig + col * nbCol] = valTmp;
+                            matModifElt(pMat, col, lig, valTmp);
                         }
                     }
                 }
