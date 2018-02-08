@@ -209,6 +209,7 @@ void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2)
         opMul(pMat1, &tmp, pMat2);
         matCopy(pMat2, &tmp);
     }
+    matLiberer(&tmp);
 }
 
 

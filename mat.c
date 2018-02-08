@@ -30,6 +30,18 @@ void matLiberer(T_Mat *pMat){
 
 void matUnite(T_Mat *pMat, int Dim){
 	matAllouer(pMat,Dim,Dim);
+	for(int i=0; i<pMat->NbLig; i++){
+		for(int j=0; j<pMat->NbCol; j++){
+			double data = matAccElt(pMat,i,j);
+			if(data-(int)data==0){ //si la donne est entiere, on affiche un entier
+				printf("%d\t",(int)data);
+			}
+			else{ //sinon on affiche un double
+				printf("%f\t",data);
+			}
+		}
+		printf("\n");
+	}
 	for(int lig = 0; lig < Dim; lig++){
         matModifElt(pMat, lig, lig, 1);
     }
