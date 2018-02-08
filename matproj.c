@@ -16,7 +16,7 @@ void main(){
 		printf("\n");
 		printf("Votre choix=====================> ");
 		char input;
-		scanf("%c",&input); //input du choix
+		scanf(" %c",&input); //input du choix
 		T_Mat t1,t2,t_res;
 		int exposant;
 		switch(input){
