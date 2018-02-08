@@ -17,11 +17,12 @@ void main(){
 		printf("Votre choix=====================> ");
 		char input;
 		scanf("%c",&input); //input du choix
+		T_Mat t1,t2,t_res;
+		int exposant;
 		switch(input){
 			case 'A':
 			case 'a':{ //Addition
 				//initialiser
-				T_Mat t1,t2,t_res;
 				printf("1ere matrice\n");
 				printf("\n");
 				esSaisir(&t1);
@@ -39,7 +40,6 @@ void main(){
 			case 'S':
 			case 's':{ //Soustraction
 				//initialiser
-				T_Mat t1,t2,t_res;
 				printf("1ere matrice\n");
 				printf("\n");
 				esSaisir(&t1);
@@ -57,7 +57,6 @@ void main(){
 			case 'm':
 			case 'M':{ //Multiplication
 				//initialiser
-				T_Mat t1,t2,t_res;
 				printf("1ere matrice\n");
 				printf("\n");
 				esSaisir(&t1);
@@ -75,12 +74,10 @@ void main(){
 			case 'p':
 			case 'P':{ //Puissance d'une matrice
 				//initialiser
-				T_Mat t1,t_res;
 				printf("la matrice\n");
 				printf("\n");
 				esSaisir(&t1);
 				//saisie de l'exposant
-				int exposant;
 				printf("Exposant: ");
 				scanf(" %d",&exposant);
 				//puissance
