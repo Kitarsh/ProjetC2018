@@ -1,5 +1,5 @@
 matproj: matproj.o es.o mat.o op.o err.o
-	gcc matproj.o err.o es.o mat.o op.o -o matproj
+	gcc matproj.o err.o es.o mat.o op.o -o matproj -lm
 
 matproj.o: matproj.c mat.h op.h es.h
 	gcc -c matproj.c
