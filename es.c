@@ -74,7 +74,7 @@ void esSaisir(T_Mat *pMat)
                 scanf("%lg",&valTmp);
                 printf("\n\n");
                 matModifElt(pMat, lig, lig, valTmp);
-                if(lig != nbLig){
+                if(lig != nbLig - 1){
                     printf("Mat[%d,%d] = ", lig , lig + 1);
                     scanf("%lg",&valTmp);
                     printf("\n\n");
