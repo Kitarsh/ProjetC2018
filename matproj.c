@@ -11,7 +11,8 @@ void main(){
 		printf("Addition de deux matrices...............: A\n");
 		printf("Soustraction de deux matrices...........: S\n");
 		printf("Multiplication de deux matrices.........: M\n");
-		printf("Puissance d'une matrice..................: P\n");
+		printf("Puissance d'une matrice.................: P\n");
+		printf("Resolution de systeme lineaire..........: R\n");
 		printf("Quitter le programme.....................: Q\n");
 		printf("\n");
 		printf("Votre choix=====================> ");
@@ -85,6 +86,26 @@ void main(){
 				//afficher
 				esAfficher(&t_res);
 				//liberer t_res
+				matLiberer(&t_res);
+				break;
+			}
+			case 'r':
+			case 'R':
+			{
+				// resolution de systeme lineaire
+				//saisie de la matrice A
+				printf("La matrice A\n\n");
+				esSaisir(&t1);
+				//saisie de la matrice B
+				printf("Le vecteur B\n\n");
+				esSaisir(&t2);
+				//resolution de systeme lineaire
+				opResSystLin(&t1, &t2, &t_res);
+				//afficher
+				esAfficher(&t_res);
+				//liberer les variables
+				matLiberer(&t1);
+				matLiberer(&t2);
 				matLiberer(&t_res);
 				break;
 			}
