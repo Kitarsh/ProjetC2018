@@ -128,11 +128,6 @@ void esSaisir(T_Mat *pMat)
             }
             break;
     }
-    printf("%lf\n",matAccElt(pMat,0,0));
-    printf("%lf\n",matAccElt(pMat,0,1));
-    printf("%lf\n",matAccElt(pMat,1,0));
-    printf("%lf\n",matAccElt(pMat,1,1));
-    esAfficher(pMat);
 }
 
 void esAfficher(T_Mat *pMat){
