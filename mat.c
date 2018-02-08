@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "mat.h"
 
 void matAllouer(T_Mat *pMat, int NbLig, int NbCol){

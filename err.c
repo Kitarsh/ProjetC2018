@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "err.h"
 
 void errMsg(int num)
