@@ -57,3 +57,42 @@ void matCopy(T_Mat *pMat1, T_Mat *pMat2){
     }
 }
 
+void matPermLig(T_Mat *pMat, int lig1, int lig2)
+{
+	//--------------------------------------------
+	//vérifier que les lignes sont différentes 
+	//deux manières : les integer sont différents,
+	//et les valeurs sont différentes.
+	//--------------------------------------------
+	int nbCol = matNbCol(pMat);
+	double tmp;
+	if(lig1 != lig2)
+	{
+		for(int i = 0; i < nbCol; i++)
+		{
+			if(matAccElt(pMat, lig1, i)!=matAccElt(pMat, lig2, i))
+			{
+	//
+	//--------------------------------
+	//Intervertir les deux lignes si
+	//les deux lignes sont différentes
+	//--------------------------------
+				tmp = matAccElt(pMat, lig1, i);
+				matModifElt(pMat, lig1, i, matAccElt(pMat, lig2, i));
+				matModifElt(pMat, lig2, i, tmp);
+			}
+		}
+	}
+	
+}
+
+
+
+void matCombLin(T_Mat *pMat, int lig1, double a, double b, int lig2)
+{
+	int nbCol = matNbCol(pMat);
+	for(int i = 0; i < nbCol; i++)
+	{
+		matModifElt(pMat, lig2, i, a * (matAccElt(pMat, lig1, i)) + b);
+	}
+}
