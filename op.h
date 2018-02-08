@@ -47,7 +47,7 @@ void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2);
  * Description : callul la puissance d'une  matrice 
  * avec allocation dans pMat2
  */
-void opPuis(T_Mat *pMat1,int* Expo,T_Mat *pMat2);
+void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2);
 
 
 

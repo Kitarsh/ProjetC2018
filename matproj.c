@@ -81,7 +81,7 @@ void main(){
 				printf("Exposant: ");
 				scanf(" %d",&exposant);
 				//puissance
-				opPuis(&t1, &exposant,&t_res);
+				opPuis(&t1, exposant,&t_res);
 				//afficher
 				esAfficher(&t_res);
 				//liberer t_res
