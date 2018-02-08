@@ -280,3 +280,39 @@ double opNorme_inf(T_Mat *pMat)
     }
     return(output);
 }
+
+void opTriang(T_Mat *A, T_Mat *B){
+	for(int j=0;j<(A->NbCol);j++){
+		//trouver le pivot (valeur sur la colonne j qui a la plus grande valeur absolue)
+		double max, p;
+		p = 0;
+		max = matAccElt(A,p,j);
+		for(int i=1;i<A->NbLig;i++){
+			if(fabs(matAccElt(A,i,j))>fabs(max)){
+				p=i;
+				max=matAccElt(A,p,j);
+			}
+		}
+		//la methode echoue si le pivot est nul
+		if(max==0){
+			errMsg(4);
+		}
+		//permute les lignes p et j
+		matPermLig(A, p, j);
+		matPermLig(B, p, j);
+		//reecrit les lignes
+		for(int i=j+1;j<(A->NbCol);i++){
+			double z = matAccElt(A,i,i)/matAccElt(A,j,j);
+			matCombLin(A, j, z, i);
+			matCombLin(B, j, z, i);
+		}
+	}
+}
+
+void opRemontee(T_Mat *A, T_Mat *B, T_Mat* X){
+	
+}
+
+void opResSystLin(T_Mat *A, T_Mat *B){
+	
+}

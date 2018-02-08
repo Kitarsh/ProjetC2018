@@ -77,17 +77,21 @@ double opNorme_2(T_Mat *pMat);
 double opNorme_inf(T_Mat *pMat);
 
 /*
+ * fonction : opTriangularisation
  * Triangule le systeme AX=B en modifiant les matrices A et B
  */
-void opTriangulation(T_Mat *A, T_Mat *B);
+void opTriang(T_Mat *A, T_Mat *B);
 
 /*
+ * fonction : opRemontee
  * A partir d'un systeme trangularisé
  * remonte le resultat X et le stocke dans la matrice colonne X
  */
 void opRemontee(T_Mat *A, T_Mat *B, T_Mat* X);
 
 /*
+ * fonction opResolutionSystemeLineaire
+ * en utilisant la methode de Gauss,
  * resoud le systeme AX=B en triangularisant puis calculant X
  * affiche les valeurs de X, puis libere la memoire. 
  */
