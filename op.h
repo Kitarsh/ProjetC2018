@@ -75,3 +75,20 @@ double opNorme_2(T_Mat *pMat);
  * Description : callul de la norme INF 
  */
 double opNorme_inf(T_Mat *pMat);
+
+/*
+ * Triangule le systeme AX=B en modifiant les matrices A et B
+ */
+void opTriangulation(T_Mat *A, T_Mat *B);
+
+/*
+ * A partir d'un systeme trangularisé
+ * remonte le resultat X et le stocke dans la matrice colonne X
+ */
+void opRemontee(T_Mat *A, T_Mat *B, T_Mat* X);
+
+/*
+ * resoud le systeme AX=B en triangularisant puis calculant X
+ * affiche les valeurs de X, puis libere la memoire. 
+ */
+void opResSystLin(T_Mat *A, T_Mat *B);

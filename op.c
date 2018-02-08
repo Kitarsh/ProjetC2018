@@ -236,7 +236,7 @@ double opNorme_1(T_Mat *pMat)
 
 double opNorme_2(T_Mat *pMat)
 {
-    //----------------------------
+    //----------------------------https://stackoverflow.com/questions/3498035/git-add-all-files-modified-deleted-and-untracked
     //initialisation des variables
     //----------------------------
     double output;
