@@ -310,9 +310,18 @@ void opTriang(T_Mat *A, T_Mat *B){
 }
 
 void opRemontee(T_Mat *A, T_Mat *B, T_Mat* X){
-	
+	for(int i=0; i<(X->NbLig); i++){
+		double tempVal=matAccElt(B,i,0);
+		for(int j=0;j<(X->NbLig);j++){
+			tempVal = tempVal - matAccElt(A,i,j)*matAccElt(X,j,0);
+		}
+		tempVal = tempVal / matAccElt(A,i,i);
+		matModifElt(X, i, 0, tempVal);
+	}
 }
 
-void opResSystLin(T_Mat *A, T_Mat *B){
-	
+void opResSystLin(T_Mat *A, T_Mat *B, T_Mat* X){
+	matAllouer(X, A->NbLig, 1);
+	opTriang(A,B);
+	opRemontee(A,B,C);
 }
