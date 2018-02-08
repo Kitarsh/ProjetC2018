@@ -175,15 +175,16 @@ void opMulScalAlloc(T_Mat *pMat1,double scal,T_Mat *pMat2)
 }
 
 
-void opPuis(T_Mat *pMat1,int* Expo,T_Mat *pMat2)
+void opPuis(T_Mat *pMat1,int Expo,T_Mat *pMat2)
 {
     //--------------------------------------------------
     //Verifier que pMat2 est de meme dimension que pMat1
     //--------------------------------------------------
     int nbLig_1, nbLig_2, nbCol_1, nbCol_2;
     nbLig_1 = matNbLig(pMat1);
-    nbLig_2 = matNbLig(pMat2);
     nbCol_1 = matNbCol(pMat1);
+    matAllouer(pMat2, nbLig_1, nbCol_1);
+    nbLig_2 = matNbLig(pMat2);
     nbCol_2 = matNbCol(pMat2);
     if(nbLig_1 != nbLig_2 || nbCol_1 != nbCol_2)
     {
@@ -203,7 +204,7 @@ void opPuis(T_Mat *pMat1,int* Expo,T_Mat *pMat2)
     //--------------------------------------------------
     //boucle for de puissance. détail : enchainement de mult(t1, tTmp, tres) et cpy(tres, tTmp)
     //--------------------------------------------------
-    for(int i = 0; i < *Expo; i++)
+    for(int i = 0; i < Expo; i++)
     {
         opMul(pMat1, &tmp, pMat2);
         matCopy(pMat2, &tmp);
