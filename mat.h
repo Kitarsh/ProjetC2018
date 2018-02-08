@@ -70,3 +70,20 @@ void matInit(T_Mat *pMat, double Val);
  *	reperee par pMat2 
  */
 void matCopy(T_Mat *pMat1, T_Mat *pMat2);
+
+
+/* 
+ * fonction matPermLig
+ * Description : permute deux lignes de la matrice  : lig1 et lig2
+ *                teste si L1 = L2
+ */
+
+void matPermLig(T_Mat *pMat, int lig1, int lig2);
+
+/*
+ * fonction : matCombLin
+ * Description : effectue une combinaison linéaire de la ligne 1 et affecte le résultat dans la ligne 2
+ *          Combinaison linéaire :    L2 <- a * L1 + b
+ */
+
+void matCombLin(T_Mat *pMat, int lig1, double a, double b, int lig2);
