@@ -1,6 +1,6 @@
+#include "mat.h"
 #include "op.h"
 #include "es.h"
-#include "mat.h"
 
 void main(){
 	int keep=1;
@@ -19,7 +19,7 @@ void main(){
 			case 'A':
 			case 'a':{ //Addition
 				//initialiser
-				T_mat t1,t2,t_res;
+				T_Mat t1,t2,t_res;
 				printf("1ere matrice\n");
 				printf("\n");
 				esSaisir(&t1);
@@ -37,7 +37,7 @@ void main(){
 			case 'S':
 			case 's':{ //Soustraction
 				//initialiser
-				T_mat t1,t2,t_res;
+				T_Mat t1,t2,t_res;
 				printf("1ere matrice\n");
 				printf("\n");
 				esSaisir(&t1);
@@ -55,7 +55,7 @@ void main(){
 			case 'm':
 			case 'M':{ //Multiplication
 				//initialiser
-				T_mat t1,t2,t_res;
+				T_Mat t1,t2,t_res;
 				printf("1ere matrice\n");
 				printf("\n");
 				esSaisir(&t1);
@@ -73,7 +73,7 @@ void main(){
 			case 'p':
 			case 'P':{ //Puissance d'une matrice
 				//initialiser
-				T_mat t1,t_res;
+				T_Mat t1,t_res;
 				printf("la matrice\n");
 				printf("\n");
 				esSaisir(&t1);
