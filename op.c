@@ -107,7 +107,7 @@ void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3)
             valTmp = 0;
             for(int k = 0; k < nbCol_1; k++)
             {
-                valTmp += matAccElt(pMat1, i, k) + matAccElt(pMat2, k, j);
+                valTmp += matAccElt(pMat1, i, k)*matAccElt(pMat2, k, j);
             }
             matModifElt(pMat3, i, j, valTmp);
         }
@@ -143,7 +143,7 @@ void opMul(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3)
             valTmp = 0;
             for(int k = 0; k < nbCol_1; k++)
             {
-                valTmp += matAccElt(pMat1, i, k) + matAccElt(pMat2, k, j);
+                valTmp += matAccElt(pMat1, i, k)*matAccElt(pMat2, k, j);
             }
             matModifElt(pMat3, i, j, valTmp);
         }
