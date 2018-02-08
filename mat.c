@@ -88,11 +88,11 @@ void matPermLig(T_Mat *pMat, int lig1, int lig2)
 
 
 
-void matCombLin(T_Mat *pMat, int lig1, double a, double b, int lig2)
+void matCombLin(T_Mat *pMat, int lig1, double a, int lig2)
 {
 	int nbCol = matNbCol(pMat);
 	for(int i = 0; i < nbCol; i++)
 	{
-		matModifElt(pMat, lig2, i, a * (matAccElt(pMat, lig1, i)) + b);
+		matModifElt(pMat, lig2, i, a * (matAccElt(pMat, lig1, i)) + matAccElt(pMat, lig2, i));
 	}
 }

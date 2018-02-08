@@ -83,7 +83,7 @@ void matPermLig(T_Mat *pMat, int lig1, int lig2);
 /*
  * fonction : matCombLin
  * Description : effectue une combinaison linéaire de la ligne 1 et affecte le résultat dans la ligne 2
- *          Combinaison linéaire :    L2 <- a * L1 + b
+ *          Combinaison linéaire :    L2 <- L2 + a * L1 
  */
 
-void matCombLin(T_Mat *pMat, int lig1, double a, double b, int lig2);
+void matCombLin(T_Mat *pMat, int lig1, double a, int lig2);
