@@ -128,6 +128,11 @@ void esSaisir(T_Mat *pMat)
             }
             break;
     }
+    printf("%lf\n",matAccElt(pMat,0,0));
+    printf("%lf\n",matAccElt(pMat,0,1));
+    printf("%lf\n",matAccElt(pMat,1,0));
+    printf("%lf\n",matAccElt(pMat,1,1));
+    esAfficher(pMat);
 }
 
 void esAfficher(T_Mat *pMat){
@@ -135,7 +140,7 @@ void esAfficher(T_Mat *pMat){
 		for(int j=0; j<pMat->NbCol; j++){
 			double data = matAccElt(pMat,i,j);
 			if(data-(int)data==0){ //si la donne est entiere, on affiche un entier
-				printf("%d\t",data);
+				printf("%d\t",(int)data);
 			}
 			else{ //sinon on affiche un double
 				printf("%f\t",data);
