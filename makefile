@@ -1,5 +1,8 @@
-matproj: es.o mat.o op.o
-	cc err.o es.o mat.o op.o -o matproj
+matproj: es.o mat.o op.o matproj.o
+	cc err.o es.o mat.o op.o matproj.o -o matproj
+	
+matproj.o: matproj.c op.h es.h mat.h
+	cc -c matproj.c
 
 err.o: err.c err.h
 	cc -c err.c
