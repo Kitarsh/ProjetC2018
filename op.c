@@ -351,7 +351,8 @@ void opDecompLu(T_Mat* A, T_Mat* L, T_Mat* U)
 {
     //initialisation de L et U a la matrice identitee
     matUnite(L, (A->NbCol));
-    matUnite(U, (A->NbCol));
+    matAllouer(U, (A->NbLig), (A->NbCol));
+    matInit(U, 0.0);
     //creation et allocation d'une matrice Pivot P
     T_Mat P;
     matAllouer(&P, (A->NbLig), (A->NbCol));
