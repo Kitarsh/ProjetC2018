@@ -236,7 +236,7 @@ double opNorme_1(T_Mat *pMat)
 
 double opNorme_2(T_Mat *pMat)
 {
-    //----------------------------https://stackoverflow.com/questions/3498035/git-add-all-files-modified-deleted-and-untracked
+    //----------------------------
     //initialisation des variables
     //----------------------------
     double output;
@@ -282,12 +282,12 @@ double opNorme_inf(T_Mat *pMat)
 }
 
 void opTriang(T_Mat *A, T_Mat *B){
-	for(int j=0;j<(A->NbCol);j++){
+	for(int j=0;j<(A->NbCol)-1;j++){
 		//trouver le pivot (valeur sur la colonne j qui a la plus grande valeur absolue)
-		double max, p;
-		p = 0;
+		double max;
+		int p = j;
 		max = matAccElt(A,p,j);
-		for(int i=1;i<A->NbLig;i++){
+		for(int i=p+1;i<(A->NbLig);i++){
 			if(fabs(matAccElt(A,i,j))>fabs(max)){
 				p=i;
 				max=matAccElt(A,p,j);
@@ -295,14 +295,14 @@ void opTriang(T_Mat *A, T_Mat *B){
 		}
 		//la methode echoue si le pivot est nul
 		if(max==0){
-			errMsg(4);
+			errMsg(5);
 		}
 		//permute les lignes p et j
 		matPermLig(A, p, j);
 		matPermLig(B, p, j);
 		//reecrit les lignes
-		for(int i=j+1;j<(A->NbCol);i++){
-			double z = matAccElt(A,i,i)/matAccElt(A,j,j);
+		for(int i=j+1;i<(A->NbCol);i++){
+			double z = -matAccElt(A,i,j)/matAccElt(A,j,j);
 			matCombLin(A, j, z, i);
 			matCombLin(B, j, z, i);
 		}
@@ -310,9 +310,9 @@ void opTriang(T_Mat *A, T_Mat *B){
 }
 
 void opRemontee(T_Mat *A, T_Mat *B, T_Mat* X){
-	for(int i=0; i<(X->NbLig); i++){
+	for(int i=(X->NbLig)-1; i>=0; i--){
 		double tempVal=matAccElt(B,i,0);
-		for(int j=0;j<(X->NbLig);j++){
+		for(int j=i+1;j<(X->NbLig);j++){
 			tempVal = tempVal - matAccElt(A,i,j)*matAccElt(X,j,0);
 		}
 		tempVal = tempVal / matAccElt(A,i,i);
@@ -321,7 +321,13 @@ void opRemontee(T_Mat *A, T_Mat *B, T_Mat* X){
 }
 
 void opResSystLin(T_Mat *A, T_Mat *B, T_Mat* X){
+	if(A->NbLig != A->NbCol){
+		errMsg(3);
+	}
+	if(B->NbCol != 1){
+		errMsg(4);
+	}
 	matAllouer(X, A->NbLig, 1);
 	opTriang(A,B);
-	opRemontee(A,B,C);
+	opRemontee(A,B,X);
 }
