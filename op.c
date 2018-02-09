@@ -390,16 +390,16 @@ void opDecompLu(T_Mat* A, T_Mat* L, T_Mat* U)
                 for(int k = 0; k < j; k++)
                 {
                     s += matAccElt(L, j, k)*matAccElt(U, k, i);
-                    matModifElt(U, j, i, matAccElt(&A2, j, i) - s);
                 }
+                matModifElt(U, j, i, matAccElt(&A2, j, i) - s);
             }
             if(j >= i)
             {
                 for(int k = 0; k < i; k++)
                 {
                     s += matAccElt(L, j, k)*matAccElt(U, k, i);
-                    matModifElt(L, j, i, (matAccElt(&A2, j, i)- s)/matAccElt(U, i, i));
                 }
+                matModifElt(L, j, i, (matAccElt(&A2, j, i)- s)/matAccElt(U, i, i));
             }
         }
     }
