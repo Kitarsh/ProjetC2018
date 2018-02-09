@@ -122,8 +122,10 @@ void main(){
 				printf("Le vecteur B\n\n");
 				esSaisir(&B);
 				//Descente pour calculer Y tel que LY=B
+				printf("descente\n");
 				opDescente(&t2, &Y, &B);
 				//Remontee pour calculer X tel que UX=Y
+				printf("montee\n");
 				opRemontee(&t_res, &Y, &X);
 				//afficher
 				esAfficher(&X);

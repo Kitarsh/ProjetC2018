@@ -310,6 +310,7 @@ void opTriang(T_Mat *A, T_Mat *B){
 }
 
 void opRemontee(T_Mat *A, T_Mat *B, T_Mat* X){
+	matAllouer(X, A->NbLig, 1);
 	for(int i=(X->NbLig)-1; i>=0; i--){
 		double tempVal=matAccElt(B,i,0);
 		for(int j=i+1;j<(X->NbLig);j++){
@@ -327,13 +328,13 @@ void opResSystLin(T_Mat *A, T_Mat *B, T_Mat* X){
 	if(B->NbCol != 1){
 		errMsg(4);
 	}
-	matAllouer(X, A->NbLig, 1);
 	opTriang(A,B);
 	opRemontee(A,B,X);
 }
 
 void opDescente(T_Mat *L, T_Mat *Y, T_Mat *B)
 {
+	matAllouer(Y, B->NbLig, 1);
     double tmp;
     for(int i = 0; i < (L->NbLig); i++)
     {
@@ -349,8 +350,8 @@ void opDescente(T_Mat *L, T_Mat *Y, T_Mat *B)
 void opDecompLu(T_Mat* A, T_Mat* L, T_Mat* U)
 {
     //initialisation de L et U a la matrice identitee
-    matUnite(L, (L->NbCol));
-    matUnite(U, (U->NbCol));
+    matUnite(L, (A->NbCol));
+    matUnite(U, (A->NbCol));
     //creation et allocation d'une matrice Pivot P
     T_Mat P;
     matAllouer(&P, (A->NbLig), (A->NbCol));
