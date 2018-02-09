@@ -363,9 +363,9 @@ void opDecompLu(T_Mat* A, T_Mat* L, T_Mat* U)
         int max_j = i;
         for(int j = i; j < (A->NbLig); j++)
         {
-            if(fabs(matAccElt(A, j, i) > fabs(matAccElt(A, max_j, i))))
+            if(fabs(matAccElt(A, j, i)) > fabs(matAccElt(A, max_j, i)))
             {
-                max_j = i;
+                max_j = j;
             }
         }
         if(max_j != i)
@@ -385,15 +385,17 @@ void opDecompLu(T_Mat* A, T_Mat* L, T_Mat* U)
     {
         for(int j = 0; j < (A->NbCol); j++)
         {
-            double s;
+            double s = 0;
             if(j <= i)
             {
                 for(int k = 0; k < j; k++)
                 {
+                    
                     s += matAccElt(L, j, k)*matAccElt(U, k, i);
                 }
                 matModifElt(U, j, i, matAccElt(&A2, j, i) - s);
             }
+            s = 0;
             if(j >= i)
             {
                 for(int k = 0; k < i; k++)
