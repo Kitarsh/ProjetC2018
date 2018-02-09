@@ -93,6 +93,14 @@ void opRemontee(T_Mat *A, T_Mat *B, T_Mat* X);
  * fonction opResolutionSystemeLineaire
  * en utilisant la methode de Gauss,
  * resoud le systeme AX=B en triangularisant puis calculant X
- * affiche les valeurs de X, puis libere la memoire. 
  */
 void opResSystLin(T_Mat *A, T_Mat *B, T_Mat* X);
+
+
+/*
+ * fonction opDecompLu
+ * A partir de A
+ * retourne la decomposition LU
+ */
+
+void opDecompLu(T_Mat* A, T_Mat* L, T_Mat* U);
