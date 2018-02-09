@@ -98,6 +98,14 @@ void opResSystLin(T_Mat *A, T_Mat *B, T_Mat* X);
 
 
 /*
+ * fonction opDescente
+ * A partir de l'equation Ly=b
+ * resoud les equations pour trouver x en descendant.
+ * stocke le resultat dans y
+ */
+void opDescente(T_Mat *L, T_Mat *Y, T_Mat *B);
+
+/*
  * fonction opDecompLu
  * A partir de A
  * retourne la decomposition LU
