@@ -95,4 +95,4 @@ void opRemontee(T_Mat *A, T_Mat *B, T_Mat* X);
  * resoud le systeme AX=B en triangularisant puis calculant X
  * affiche les valeurs de X, puis libere la memoire. 
  */
-void opResSystLin(T_Mat *A, T_Mat *B);
+void opResSystLin(T_Mat *A, T_Mat *B, T_Mat* X);
