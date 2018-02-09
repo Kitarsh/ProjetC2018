@@ -13,12 +13,14 @@ void main(){
 		printf("Multiplication de deux matrices.........: M\n");
 		printf("Puissance d'une matrice.................: P\n");
 		printf("Resolution de systeme lineaire..........: R\n");
+		printf("Resolution LU...........................: L\n");
 		printf("Quitter le programme.....................: Q\n");
 		printf("\n");
 		printf("Votre choix=====================> ");
 		char input;
 		scanf(" %c",&input); //input du choix
 		T_Mat t1,t2,t_res;
+		T_Mat B,Y,X;
 		int exposant;
 		switch(input){
 			case 'A':
@@ -107,6 +109,31 @@ void main(){
 				matLiberer(&t1);
 				matLiberer(&t2);
 				matLiberer(&t_res);
+				break;
+			}
+			case 'l':
+			case 'L':{ //resolution LU
+				//saisie de la matrice A
+				printf("La matrice A\n\n");
+				esSaisir(&t1);
+				//decomposition LU : L=t2, U=t_res
+				opDecompLu(&t1, &t2, &t_res);
+				//saisie de la matrice B
+				printf("Le vecteur B\n\n");
+				esSaisir(&B);
+				//Descente pour calculer Y tel que LY=B
+				opDescente(&t2, &Y, &B);
+				//Remontee pour calculer X tel que UX=Y
+				opRemontee(&t_res, &Y, &X);
+				//afficher
+				esAfficher(&X);
+				//liberer les variables
+				matLiberer(&t1);
+				matLiberer(&t2);
+				matLiberer(&t_res);
+				matLiberer(&X);
+				matLiberer(&Y);
+				matLiberer(&B);
 				break;
 			}
 			case 'q':
