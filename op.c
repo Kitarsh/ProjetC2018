@@ -95,14 +95,14 @@ void opMulAlloc(T_Mat *pMat1,T_Mat *pMat2,T_Mat *pMat3)
     //--------------------------------
     //allouer pMat3
     //--------------------------------
-    matAllouer(pMat3, nbLig_1, nbCol_1);
+    matAllouer(pMat3, nbLig_1, nbCol_2);
     //
     //-----------------------------------------------
     //boucle for pour multiplier et ranger dans pMat3
     //-----------------------------------------------
     for(int i = 0; i < nbLig_1; i++)
     {
-        for(int j = 0; j < nbCol_1; j++)
+        for(int j = 0; j < nbCol_2; j++)
         {
             valTmp = 0;
             for(int k = 0; k < nbCol_1; k++)
@@ -330,4 +330,78 @@ void opResSystLin(T_Mat *A, T_Mat *B, T_Mat* X){
 	matAllouer(X, A->NbLig, 1);
 	opTriang(A,B);
 	opRemontee(A,B,X);
+}
+
+void opDescente(T_Mat *L, T_Mat *Y, T_Mat *B)
+{
+    double tmp;
+    for(int i = 0; i < (L->NbLig); i++)
+    {
+        tmp = matAccElt(B, i, 0);
+        for(int j = 0; j < i; j++){
+            tmp -= matAccElt(L, i, j) * matAccElt(Y, j, 0);
+        }
+        matModifElt(Y, i, 0, tmp);
+    }
+}
+
+
+void opDecompLu(T_Mat* A, T_Mat* L, T_Mat* U)
+{
+    //initialisation de L et U a la matrice identitee
+    matUnite(L, (L->NbCol));
+    matUnite(U, (U->NbCol));
+    //creation et allocation d'une matrice Pivot P
+    T_Mat P;
+    matAllouer(&P, (A->NbLig), (A->NbCol));
+    matUnite(&P, (A->NbCol));
+    //selection du pivot
+    for(int i = 0; i < (A->NbLig); i++)
+    {
+        int max_j = i;
+        for(int j = i; j < (A->NbLig); j++)
+        {
+            if(fabs(matAccElt(A, j, i) > fabs(matAccElt(A, max_j, i))))
+            {
+                max_j = i;
+            }
+        }
+        if(max_j != i)
+        {
+            for(int k = 0; k < (A->NbLig); k++)
+            {
+                matPermLig(&P, i, max_j);
+            }
+        }
+    }
+    //creation et allocation de la matrice comprenant les inversions de pivots.
+    T_Mat A2;
+    matAllouer(&A2, (A->NbLig), (A->NbCol));
+    opMul(A, &P, &A2);
+    //application de l'algorithme LU
+    for(int i = 0; i < (A->NbLig); i++)
+    {
+        for(int j = 0; j < (A->NbCol); j++)
+        {
+            double s;
+            if(j <= i)
+            {
+                for(int k = 0; k < j; k++)
+                {
+                    s += matAccElt(L, j, k)*matAccElt(U, k, i);
+                    matModifElt(U, j, i, matAccElt(&A2, j, i) - s);
+                }
+            }
+            if(j >= i)
+            {
+                for(int k = 0; k < i; k++)
+                {
+                    s += matAccElt(L, j, k)*matAccElt(U, k, i);
+                    matModifElt(L, j, i, (matAccElt(&A2, j, i)- s)/matAccElt(U, i, i));
+                }
+            }
+        }
+    }
+    matLiberer(&A2);
+    matLiberer(&P);
 }
