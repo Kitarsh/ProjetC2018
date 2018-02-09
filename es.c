@@ -19,10 +19,10 @@ void esSaisir(T_Mat *pMat)
     //demander la taille de la matrice (Ligne, Colonne)
     //-------------------------------------------------
     printf("Nombre de lignes : ");
-    scanf("%d",&nbCol);
+    scanf("%d",&nbLig);
     printf("\n\n");
     printf("Nombre de colonnes : ");
-    scanf("%d",&nbLig);
+    scanf("%d",&nbCol);
     printf("\n\n");
     //
     //-----------------------------------------------------------
